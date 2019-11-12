@@ -14,4 +14,23 @@ $(document).ready(function() {
             $(areaToAddTo).append(a);
         }
     }
+
+    $(document).on("click", ".animal-button", function() {
+        $("animals").empty();
+        $(".animal-button").removeClass("active");
+        $(this).addClass("active");
+
+        var type = $(this).attr("data-type");
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+
+        .then(function(response){
+            var results = response.data;
+            
+        })
+    })
 })
