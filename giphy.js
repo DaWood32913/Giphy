@@ -21,7 +21,7 @@ $(document).ready(function() {
         $(this).addClass("active");
 
         var type = $(this).attr("data-type");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + type + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animals + "&api_key=qZI1SOX9XlgxZaeFDhc386iWGkx3d5W1&limit=10";
 
         $.ajax({
             url: queryURL,
@@ -55,4 +55,33 @@ $(document).ready(function() {
             }
         });
     });
-})
+
+    $(document).on("click", ".animal-image", function() {
+
+        var state = $(this).attr("data-state");
+    
+        if (state === "still") {
+          $(this).attr("src", $(this).attr("data-animate"));
+          $(this).attr("data-state", "animate");
+        }
+        else {
+          $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+        }
+      });
+    
+      $("#add-animal").on("click", function(event) {
+        event.preventDefault();
+        var newAnimal = $("input").eq(0).val();
+    
+        if (newAnimal.length > 2) {
+          animals.push(newAnimal);
+        }
+    
+        populateButtons(animals, "animal-button", "#animal-buttons");
+    
+      });
+    
+      populateButtons(animals, "animal-button", "#animal-buttons");
+    
+});
