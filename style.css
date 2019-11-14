@@ -1,6 +1,9 @@
 body {
     font: 18px arial, sans-serif;
-    background: #eee;
+    background-image: url("animals.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
   }
   
   #animals {
